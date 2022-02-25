@@ -24,7 +24,7 @@ with requests.Session() as s:
     my_list.pop(0)
     my_list = sorted(my_list, key=return_epoch)
     for row in my_list:
-        producer.send('time_series_intraday_prices', dict(time=row[0], open=float(row[1]), high=float(row[2]),
+        producer.send('stock-raw', dict(time=row[0], open=float(row[1]), high=float(row[2]),
                                                           low=float(row[3]), close=float(row[4]), symbol='IBM'))
 
     producer.flush()
